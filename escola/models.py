@@ -2,7 +2,7 @@ from django.db import models
 
 class Aluno(models.Model):
     nome = models.CharField(
-        max_length=30, null=False, blank=False
+        max_length=30
         )
     rg = models.CharField(
         max_length=9
@@ -24,12 +24,12 @@ class Curso(models.Model):
     ]
     
     codigo_curso = models.CharField(
-        max_length=10, null=False, blank=False
+        max_length=10
         )
     descricao_curso = models.CharField(
-        max_length=100, null=False, blank=False
+        max_length=100
         )
-    nivel_curso = models.CharField(max_length=1, choices=NIVEL, blank=False, null=False, default='B')
+    nivel_curso = models.CharField(max_length=1, choices=NIVEL, default='B')
     
     def __str__(self):
         return self.descricao_curso
