@@ -6,7 +6,7 @@ class AlunoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aluno
         fields = [
-            'id', 'nome', 'rg', 'cpf'
+            'id', 'nome', 'rg', 'cpf', 'data_nascimento'
             ]
         
 class CursoSerializer(serializers.ModelSerializer):
