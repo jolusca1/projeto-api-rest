@@ -21,6 +21,6 @@ class MatriculasViewSet(viewsets.ModelViewSet):
 class ListMatriculasAluno(generics.ListAPIView):
     """ Listando as matrículas de um aluno ou aluna """ 
     def get_queryset(self):
-        queryset = Matricula.objects.filter(alunos_id=self.kwargs['pk'])
+        queryset = Matricula.objects.filter(aluno_id=self.kwargs['pk'])
         return queryset
     serializer_class = ListaMatriculasAlunoSerializer
