@@ -1,2 +1,3 @@
 # projeto-api-rest
- projeto pessoal utilizando Rest Framework 
+ projeto pessoal utilizando Rest Framework
+ Serializers
