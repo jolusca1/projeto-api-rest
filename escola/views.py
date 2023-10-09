@@ -1,8 +1,10 @@
+from django.utils.decorators import method_decorator
 from rest_framework import viewsets, generics
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from escola.models import Aluno, Curso, Matricula
 from escola.serializer import AlunoSerializer, CursoSerializer, MatriculaSerializer, ListaMatriculasAlunoSerializer, ListaAlunosMatriculadosEmUmCursoSerializer
+from django.views.decorators.cache import cache_page
 
 class AlunosViewSet(viewsets.ModelViewSet):
     """ Exibindo todos os alunos e alunas """
@@ -24,6 +26,10 @@ class MatriculasViewSet(viewsets.ModelViewSet):
     serializer_class = MatriculaSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
+
+    @method_decorator(cache_page(20))
+    def dispatch(self, *args, **kwargs):
+        return super(MatriculasViewSet, self).dispatch(*args, **kwargs)
     
 class ListaMatriculasAluno(generics.ListAPIView):
     """ Listando as matrículas de um aluno ou aluna """ 
