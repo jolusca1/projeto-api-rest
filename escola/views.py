@@ -17,8 +17,7 @@ class CursosViewSet(viewsets.ModelViewSet):
     """ Exibindo todos os cursos """
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    http_method_names = ['get', 'post', 'put', 'patch']
     
 class MatriculasViewSet(viewsets.ModelViewSet):
     """ Listando as matrículas """
